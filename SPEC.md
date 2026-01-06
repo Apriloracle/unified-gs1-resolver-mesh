@@ -3,6 +3,11 @@
 
 ---
 
+**Stewardship:** Reap Protocol contributors  
+**Status:** Draft specification — open for public review
+
+---
+
 ## 1. Purpose
 
 The Unified GS1 Resolver Mesh provides an **open, neutral, and non-discriminatory mechanism** for resolving GS1 identifiers (e.g., GTINs) to publicly available product information, including datasets such as Open Food Facts.  
