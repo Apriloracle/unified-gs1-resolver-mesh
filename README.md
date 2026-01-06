@@ -52,6 +52,17 @@ All contributions adhere to open principles and **do not change the public-good 
 
 ---
 
+## HolocronRouter
+
+The HolocronRouter included in this repo is **permanent and immutable**.  
+It serves as the canonical routing infrastructure for the Unified GS1 Resolver Mesh.  
+
+- Fully open-source and permissionless  
+- No further updates will be made  
+- Reference implementation for resolution operations across all supported networks
+
+---
+
 ## License
 
 * **Code & SDKs:** MIT License
