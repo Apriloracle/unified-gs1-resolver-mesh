@@ -111,7 +111,8 @@ To ensure consistent addressing and simplified integration across the multi-chai
 - Celo  
 - Optimism (OP Mainnet)  
 
-This universal deployment ensures that any participant can verify data integrity or resolve a Digital Link on their preferred network infrastructure **without proprietary lock-in**.
+> **Note:** The HolocronRouter is permanent and frozen. No changes will be made after deployment. This ensures any participant can verify data integrity or resolve a Digital Link on their preferred network infrastructure without risk of proprietary modification.
+
 
 ---
 
