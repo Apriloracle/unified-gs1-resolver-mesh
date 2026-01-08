@@ -75,3 +75,4 @@ It serves as the canonical routing infrastructure for the Unified GS1 Resolver M
 
 * [SPEC.md](SPEC.md) – Full specification
 * [Reap Protocol SDK](https://github.com/AprilOracle/reap-protocol-sdk)
+* [DEFENSIVE_PUBLICATION.md](https://github.com/Apriloracle/unified-gs1-resolver-mesh/blob/main/DEFENSIVE_PUBLICATION.md) 
