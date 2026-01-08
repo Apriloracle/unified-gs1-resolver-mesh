@@ -86,7 +86,7 @@ For patent examination, standards review, or academic citation purposes, the fol
 - **Specification**: https://apriloracle.github.io/unified-gs1-resolver-mesh/
 - **arXiv Preprint**: [To be added upon publication]
 - **EIP Proposal**: [To be added upon submission]
-- **Technical Contact**: [your contact method]
+- **Technical Contact**: info@apriloracle.com
 
 ## Version History
 
