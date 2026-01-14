@@ -54,7 +54,7 @@ This document describes the architectural design choices made in the Unified GS1
 
 | Version | Date | Status | Notes |
 |---------|------|--------|-------|
-| 1.0 | 2026-01-16 | Published | Initial design intent documentation |
+| 1.0 | 2026-01-14 | Published | Initial design intent documentation |
 | 1.1 | TBD | Planned | Updates based on community feedback |
 | 2.0 | TBD | Planned | Revisions if regulatory landscape evolves |
 
