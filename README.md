@@ -63,6 +63,14 @@ It serves as the canonical routing infrastructure for the Unified GS1 Resolver M
 
 ---
 
+## Design Intent Documentation
+
+We have published documentation describing the architectural design principles 
+and technical implementation of our systems. See [DESIGN_INTENT_ANALYSIS.md](DESIGN_INTENT_ANALYSIS.md).
+
+**Note:** This document describes technical design choices and engineering 
+rationale. It does not constitute legal advice or regulatory analysis.
+
 ## License
 
 * **Code & SDKs:** MIT License
@@ -76,3 +84,4 @@ It serves as the canonical routing infrastructure for the Unified GS1 Resolver M
 * [SPEC.md](SPEC.md) – Full specification
 * [Reap Protocol SDK](https://github.com/AprilOracle/reap-protocol-sdk)
 * [DEFENSIVE_PUBLICATION.md](https://github.com/Apriloracle/unified-gs1-resolver-mesh/blob/main/DEFENSIVE_PUBLICATION.md) 
+* [DESIGN_INTENT_ANALYSIS.md](DESIGN_INTENT_ANALYSIS.md)
