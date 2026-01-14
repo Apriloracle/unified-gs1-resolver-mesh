@@ -88,10 +88,18 @@ For patent examination, standards review, or academic citation purposes, the fol
 - **EIP Proposal**: [To be added upon submission]
 - **Technical Contact**: info@apriloracle.com
 
+## Design Intent Documentation
+
+For discussion of architectural design principles and technical implementation 
+rationale, see DESIGN_INTENT_ANALYSIS.md.
+
+Note: That document describes technical design, not legal classification.
+
 ## Version History
 
 - v1.0 (2026-01-06): Initial defensive publication notice with IP clarification
 - v1.1 (2026-01-08): Added patent-examiner language, persistent identifier placeholders, and enhanced prior art reference section
+- v1.2 (2026-01-14): Added Design Intent Documentation link
 
 ---
 
