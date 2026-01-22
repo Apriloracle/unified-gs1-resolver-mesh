@@ -30,10 +30,11 @@ Separately, certain commercial optimization methods for agentic commerce network
 
 - **Specification v0.1**: January 6, 2026 - https://apriloracle.github.io/unified-gs1-resolver-mesh/
 - **GitHub Repository**: January 6, 2026 - https://github.com/apriloracle/unified-gs1-resolver-mesh
+- **Zenodo Preprint**: January 21, 2026 - https://doi.org/10.5281/zenodo.18332235
 - **arXiv Preprint**: [Pending submission] - [arXiv ID once published]
 - **EIP Proposal**: [Pending submission] - [EIP number once assigned]
 
-**DOI / Persistent Identifier**: Pending (arXiv)  
+**DOI / Persistent Identifier**: 10.5281/zenodo.18332235 (Zenodo)  
 **SHA-256 checksum of repository at publication**: [To be computed at arXiv submission]
 
 ## Legal Status
@@ -84,7 +85,7 @@ For patent examination, standards review, or academic citation purposes, the fol
 
 - **Repository**: https://github.com/apriloracle/unified-gs1-resolver-mesh
 - **Specification**: https://apriloracle.github.io/unified-gs1-resolver-mesh/
-- **arXiv Preprint**: [To be added upon publication]
+- **Zenodo Preprint**: https://doi.org/10.5281/zenodo.18332235
 - **EIP Proposal**: [To be added upon submission]
 - **Technical Contact**: info@apriloracle.com
 
@@ -100,6 +101,7 @@ Note: That document describes technical design, not legal classification.
 - v1.0 (2026-01-06): Initial defensive publication notice with IP clarification
 - v1.1 (2026-01-08): Added patent-examiner language, persistent identifier placeholders, and enhanced prior art reference section
 - v1.2 (2026-01-14): Added Design Intent Documentation link
+- v1.3 (2026-01-21): Added Zenodo Preprint and DOI
 
 ---
 
