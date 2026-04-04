@@ -84,6 +84,7 @@ rationale. It does not constitute legal advice or regulatory analysis.
 ## Quick Links
 
 * [SPEC.md](SPEC.md) – Full specification
+* [SPEC_v0.2.md](SPEC_v0.2.md) – Full version 0.2 specification
 * [Reap Protocol SDK](https://github.com/AprilOracle/reap-protocol-sdk)
 * [DEFENSIVE_PUBLICATION.md](https://github.com/Apriloracle/unified-gs1-resolver-mesh/blob/main/DEFENSIVE_PUBLICATION.md) 
 * [DESIGN_INTENT_ANALYSIS.md](DESIGN_INTENT_ANALYSIS.md)
