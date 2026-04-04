@@ -104,5 +104,5 @@ We have published documentation describing the architectural design principles a
 *[SPEC_v0.2.md](SPEC_v0.2.md) – Full version 0.2 specification (Semantic Computation Layer)
 * [SPEC.md](SPEC.md) – Version 0.1 specification (Base Layer)
 * [Reap Protocol SDK](https://github.com/AprilOracle/reap-protocol-sdk)
-*[DEFENSIVE_PUBLICATION.md](https://github.com/Apriloracle/unified-gs1-resolver-mesh/blob/main/DEFENSIVE_PUBLICATION.md) 
+* [DEFENSIVE_PUBLICATION.md](https://github.com/Apriloracle/unified-gs1-resolver-mesh/blob/main/DEFENSIVE_PUBLICATION.md) 
 * [DESIGN_INTENT_ANALYSIS.md](DESIGN_INTENT_ANALYSIS.md)
