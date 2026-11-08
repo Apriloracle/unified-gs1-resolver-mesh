@@ -2,88 +2,143 @@
 
 # Unified GS1 Resolver Mesh
 
-**Public Digital Infrastructure for GS1 Identifier Resolution & Semantic Computation**
+## Public Infrastructure Specification — v3.0
 
-The Unified GS1 Resolver Mesh provides **open, neutral, and permissionless resolution of GS1 identifiers** (e.g., GTINs) to publicly available product information, including Open Food Facts datasets. 
+| | |
+|---|---|
+| **Status** | Public draft for review |
+| **Date** | 8 November 2026 |
+| **Supersedes** | Draft v2.2 |
+| **Steward** | Reap Protocol Community, which includes April Labs |
+| **Licence** | MIT (code and documents) |
 
-With the introduction of the **v0.2 Specification**, the mesh is evolving from a stateless lookup infrastructure into a **distributed semantic computation substrate**. Physical objects no longer just have database entries; they carry *living hypervectors* that accumulate verifiable meaning, history, and physics as they move through the global supply chain.
-
-This repository contains the **reference implementation**, architectural blueprints, and supporting documentation for the resolver mesh.
-
----
-
-## Core Principles
-
-* **Open & Permissionless:** Anyone can run a node or resolve identifiers without payment or token ownership.
-* **Neutral & Non-discriminatory:** No restrictions based on organization, jurisdiction, or commercial status.
-* **Public Infrastructure:** Resolving GS1 identifiers is a public good; this infrastructure does not impose fees or gate access.
-* **Provenance without Overhead:** The v0.2 Semantic Computation Layer mathematically bakes supply chain history into hypervectors, eliminating the need for expensive per-transaction blockchain gas fees.
-* **Reference Implementation:** HolocronRouter provides the canonical, multi-chain, production-grade routing trust anchor.
+**Changes in v3.0.** This revision removes every claim that cannot be tested against the deployed system. The specification now covers one thing — the trust anchor — and states plainly what that anchor does and does not establish. Material that is not deployed has been moved to a non-normative annex rather than deleted, so that the direction of travel is recorded without being claimed.
 
 ---
 
-## Architecture: The Geometric Stack (v0.2)
+## 1. Purpose
 
-The v0.2 resolver mesh operates as a structurally coherent hypergraph, completely eliminating the impedance mismatch between data, network wiring, and physical execution. It is governed by three orthogonal mathematical laws:
+The Unified GS1 Resolver Mesh resolves GS1 identifiers — GTIN, SSCC and GLN — to publicly available product and supply-chain data, without an account, a fee, a token, or an approval.
 
-1. **Law 1: Finite Group Algebra ($GF(2^{14})$) — *Encode***  
-   Basis vectors are perfectly orthogonal, defined by primitive roots over Galois fields for exact, hardware-native bitwise operations.
-2. **Law 2: Finite Orbifold Projection ($\mathbb{Z}_q$) — *Constrain***  
-   Vectors are stabilized at every hop using topological anchor points to prevent semantic drift and noise accumulation.
-3. **Law 3: Tachyon Dynamics — *Evolve***  
-   Leveraging frameworks derived from Closed String Field Theory (CSFT), the mesh resolves conflicts and decomposes aggregated containers (e.g., pallets) using pre-calculated binding matrices ($M$).
+The mesh does not hold product data. It holds an anchor: a permanent public record that an identifier has been claimed, by which address, and when. Resolution data is fetched from its source and verified against that anchor.
 
-These laws are reduced offline into finite matrix equations and compiled into bare-metal C executables via the **HDCC Compiler**, running at $O(1)$ constant time directly on ROS 2 edge scanners and motor controllers.
+## 2. Scope
+
+**This specification defines:**
+
+- the behaviour of the trust anchor;
+- the guarantees that follow from the anchor's design;
+- what the anchor establishes and what it does not;
+- licensing and neutrality commitments.
+
+**This specification does not define:**
+
+- application logic, or the content and quality of product data;
+- the governance of organisations that publish or consume data;
+- any computational, semantic or modelling layer, deployed or proposed;
+- commercial deployment, pricing or service terms.
+
+## 3. Conventions
+
+The key words MUST, MUST NOT, SHOULD, SHOULD NOT and MAY are to be interpreted as described in RFC 2119 and RFC 8174.
+
+A requirement in this document is normative only in Sections 4 to 7. Annex A is informative and carries no requirements.
+
+## 4. The trust anchor
+
+### 4.1 Deployment
+
+The anchor is a single small contract, `HolocronRouter`, deployed at
+
+```
+0xeFaAB5Ec699d8c3Bd63d783025268c545357d45F
+```
+
+on ten EVM networks. The address is identical on every network. The contract has no administrative role, no proxy, no upgrade path, no pause function and no external calls. It cannot be changed by its authors or by anyone else.
+
+### 4.2 What the anchor records
+
+For each identifier coordinate, the anchor records three values:
+
+- that the coordinate has been claimed;
+- the address that claimed it;
+- the time of the claim.
+
+The first claim for a coordinate is final. Later writes to the same coordinate are ignored. Writing requires no permission, no payment and no allowlist.
+
+### 4.3 What the anchor does not establish
+
+This is the most important section of this document.
+
+**The anchor MUST NOT be read as evidence of authority.** It records that an address claimed an identifier. It does not establish that the claimant has any right to that identifier, any relationship to the goods it denotes, or any standing to speak for the organisation named in it.
+
+The anchor does not store product data, does not adjudicate between competing claimants, does not link an identifier to a legal entity, and does not attest to the accuracy of anything outside itself.
+
+A relying party that needs to know whether a claimant may act for an identifier MUST obtain that assurance elsewhere. The anchor can tell it who claimed the identifier and when. It cannot tell it whether the claim was justified.
+
+## 5. Guarantees
+
+The mesh makes the following guarantees. Each is a property of the deployed anchor.
+
+| | Guarantee | Basis |
+|---|---|---|
+| **G1** | **Deterministic record.** For a given identifier coordinate, every node on every network returns the same record, permanently. | The record is a function of chain state at the time of the first write. |
+| **G2** | **Permissionless access.** Reading the anchor requires no account, credential, token, fee or approval. | The contract exposes no access control. |
+| **G3** | **Non-discriminatory write.** No address is excluded from claiming an identifier. | The write path has no allowlist and no gate. |
+| **G4** | **Availability bounded by network liveness.** The anchor remains readable for as long as any one of the supporting networks continues to produce blocks. | The record is replicated across ten independent networks. |
+| **G5** | **No custody.** The mesh never takes custody of product data, of the identifier, or of any right in either. | The anchor stores three values and nothing else. |
+
+The mesh makes no guarantee of data accuracy, completeness, currency or fitness for any purpose. Those are properties of the data source, not of the anchor.
+
+## 6. Data and licensing
+
+Product data remains with the party that publishes it and remains subject to that party's licence. The anchor stores no product data, so resolution transfers no data and no right in data.
+
+Code, specification and documentation are published under the MIT licence. The contract source carries an SPDX identifier recording the same.
+
+## 7. Neutrality and stewardship
+
+Resolution MUST NOT be conditional on holding any token, membership, contract or credential. This is a property of the deployed contract, not a policy that could later be relaxed.
+
+Stewardship of this specification is separate from any ecosystem that builds on it. Stewardship confers no control over the anchor, because the anchor has no control surface. A change to this document cannot change the deployed contract; at most it can change what future implementations are asked to do.
+
+## 8. Implementation status
+
+| Component | Status |
+|---|---|
+| Trust anchor (`HolocronRouter`) | Deployed and immutable on ten EVM networks |
+| Resolution client | Reference implementation published |
+| Public data sources | Integrated, each under its own licence |
+| Computational extension | Not deployed. Design only, recorded in Annex A |
+
+Nothing in Sections 1 to 7 depends on the fourth row.
+
+## 9. Versioning
+
+The version of this specification is independent of the anchor. The anchor does not version and will not be replaced.
+
+A later version MAY add guarantees. It MUST NOT weaken Section 4.3 or Section 5. Any version that does so describes a different system and must not be presented as a revision of this one.
 
 ---
 
-## Relationship to Reap Protocol & APRIL
+## Annex A — Forward direction (informative)
 
-* The **Reap Protocol SDK** provides tools, HDCC compiler targets, and ecosystem extensions for developers interacting with the resolver mesh.
-* Governance of the Reap Protocol is managed on-chain by the **April Token (APRIL) community**.
-* **APRIL governance does not control the resolver mesh**; it governs optional ecosystem extensions, incentives, and services only.
-* This separation ensures long-term neutrality and accessibility of public GS1 resolution.
+Earlier drafts described a computational layer intended to extend the anchor from a record of claims into a substrate for accumulating state across a supply chain. That direction is recorded here for continuity and nothing in it is claimed, implemented, required or relied upon.
 
----
-
-## Spec & Documentation
-
-The resolver mesh architecture is formally defined in our specification documents:
-
-* **[Draft v0.1 Specification](SPEC.md):** Defines the live Base Layer, neutral governance, and HolocronRouter trust anchors.
-* **[Draft v0.2 Specification](SPEC_v0.2.md):** Introduces the Semantic Computation Layer, Hypervector physics, the HDCC Compiler pipeline, and the Ramanujan/Cayley graph topology (Forward Design Target).
+It is excluded from the normative part of this specification for a single reason: none of it is deployed, and the properties it would assert cannot presently be tested against a running system. A guarantee that cannot be checked is not a guarantee, and stating it alongside the ones that can be checked would weaken all of them.
 
 ---
 
-## Data Sources
+## Annex B — Relationship to earlier drafts
 
-* Data remains subject to the original data provider license.
-* Contributions from Open Food Facts and others are integrated according to their respective open rules.
-* Semantic hypervector state accumulated during resolution is a derived computational artifact of the mesh protocol and is not subject to any single data provider's ownership claims.
+| Draft | Position |
+|---|---|
+| v0.1 | Base layer. Retained; normative content carried into Sections 4 and 5. |
+| v0.2 | Added a semantic computation layer and physics-derived framing. Layer not deployed; framing withdrawn. |
+| v2.2 | Reformulated the same layer in operator algebra. Layer still not deployed; content moved to Annex A. Physics metaphors removed. |
 
----
+This specification retains the base layer without modification and closes the semantic layer as an open question rather than a claim.
 
-## Contributing
-
-Contributions are welcome via standard GitHub workflow:
-
-* Fork the repository
-* Submit pull requests
-* Follow the [Contribution Guidelines](CONTRIBUTING.md)
-
-All contributions adhere to open principles and **do not change the public-good guarantees**.
-
----
-
-## HolocronRouter (The Trust Anchor)
-
-While the semantic mesh handles high-speed, P2P geometric computation, the HolocronRouter acts as the absolute Root of Trust. The HolocronRouter included in this repo is **permanent and immutable**.  
-
-- Fully open-source and permissionless  
-- No further updates will be made  
-- Reference implementation for resolution operations across all supported networks (Ethereum, Base, Polygon, Arbitrum, etc.)
-
----
 
 ## Design Intent Documentation
 
